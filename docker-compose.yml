@@ -1,0 +1,29 @@
+services:
+  scripthive-api:
+    container_name: scripthive-api  
+    build:
+      context: ./src
+      dockerfile: ./ScriptHive.Api/Dockerfile
+    ports:
+      - "5351:5351"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DOTNET_RUNNING_IN_CONTAINER: true
+      ENABLE_SWAGGER: true
+    depends_on:
+      - scripthive-db
+
+  scripthive-db:
+    image: postgres:15
+    container_name: scripthive-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: script_hive
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
