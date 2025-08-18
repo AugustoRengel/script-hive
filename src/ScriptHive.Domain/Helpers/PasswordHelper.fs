@@ -7,6 +7,7 @@ module PasswordHelper =
     let saltSize = 16
     let iterations = 100_000
 
+    [<CompiledName("HashPassword")>]
     let hashPassword (password: string) =
         let salt = Array.zeroCreate<byte> saltSize
         use rng = RandomNumberGenerator.Create()
@@ -15,6 +16,7 @@ module PasswordHelper =
         let hash = pbkdf2.GetBytes(32)
         $"{Convert.ToBase64String(salt)}.{Convert.ToBase64String(hash)}"
 
+    [<CompiledName("VerifyPassword")>]
     let verifyPassword (password: string) (stored: string) =
         let parts = stored.Split('.')
         if parts.Length <> 2 then false
