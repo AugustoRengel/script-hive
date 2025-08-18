@@ -26,7 +26,12 @@ public class Program
 
         builder.Services.AddDbContext<AppDbContext>(options =>
         {
-            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+                ?? throw new ArgumentNullException("DefaultConnection");
+            options.UseNpgsql(connectionString, npg =>
+            {
+                npg.EnableRetryOnFailure(maxRetryCount: 5);
+            });
         });
 
         // JWT Configuration
@@ -105,7 +110,6 @@ public class Program
         if (!app.Environment.IsEnvironment("Testing"))
         {
             using var scope = app.Services.CreateScope();
-            //var env = scope.ServiceProvider.GetRequiredService<IWebHostEnvironment>();
             var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
 
             DbInitializer.Seed(dbContext);

@@ -1,4 +1,22 @@
 services:
+  scripthive-db:
+    image: postgres:15
+    container_name: scripthive-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: script_hive
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d script_hive || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
   scripthive-api:
     container_name: scripthive-api  
     build:
@@ -12,19 +30,8 @@ services:
       DOTNET_RUNNING_IN_CONTAINER: true
       ENABLE_SWAGGER: true
     depends_on:
-      - scripthive-db
-
-  scripthive-db:
-    image: postgres:15
-    container_name: scripthive-db
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: script_hive
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+      scripthive-db:
+        condition: service_healthy
 
 volumes:
   postgres_data:
