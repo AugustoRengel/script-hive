@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ScriptHive.Api.Endpoints.ScriptEndpoints;
 using ScriptHive.Api.Endpoints.UserEndpoints;
+using ScriptHive.Api.Middlewares;
 using ScriptHive.Application;
 using ScriptHive.Infrastructure;
 using ScriptHive.Infrastructure.Context;
@@ -32,6 +33,8 @@ public class Program
         builder.Services.AddInfrastructure();
 
         var app = builder.Build();
+
+        app.UseMiddleware<GlobalExceptionMiddleware>();
 
         if (Environment.GetEnvironmentVariable("ENABLE_SWAGGER") == "true")
         {
