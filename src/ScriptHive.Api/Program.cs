@@ -1,6 +1,6 @@
-
 using Microsoft.EntityFrameworkCore;
 using ScriptHive.Api.Endpoints.ScriptEndpoints;
+using ScriptHive.Api.Endpoints.UserEndpoints;
 using ScriptHive.Application;
 using ScriptHive.Infrastructure;
 using ScriptHive.Infrastructure.Context;
@@ -22,7 +22,11 @@ public class Program
 
 
         builder.Services.AddDbContext<AppDbContext>(options =>
-            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+        {
+            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
+                   .EnableSensitiveDataLogging()
+                   .EnableDetailedErrors();
+        });
 
         builder.Services.AddApplication();
         builder.Services.AddInfrastructure();
@@ -55,6 +59,7 @@ public class Program
 
         app.UseAuthorization();
 
+        app.MapGroup("/users").MapUserEndpoints();
         app.MapGroup("/scripts").MapScriptEndpoints();
 
         app.MapControllers();

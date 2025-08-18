@@ -1,2 +1,5 @@
+# Força Unix-style (LF) para arquivos yml
+*.yml text eol=lf
+
 # Força Unix-style (LF) para scripts shell
 *.sh text eol=lf

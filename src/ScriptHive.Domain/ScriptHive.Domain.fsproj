@@ -6,9 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Helpers\PasswordHelper.fs" />
     <Compile Include="ValueObjects\UserRole.fs" />
     <Compile Include="Entities\Script.fs" />
     <Compile Include="Entities\User.fs" />
+    <Compile Include="Interfaces\User\IUserRepository.fs" />
 	<Compile Include="Interfaces\Script\IScriptRepository.fs" />
   </ItemGroup>
 

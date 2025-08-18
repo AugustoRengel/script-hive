@@ -23,10 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Endpoints\User\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ScriptHive.Application\ScriptHive.Application.csproj" />
     <ProjectReference Include="..\ScriptHive.Infrastructure\ScriptHive.Infrastructure.csproj" />
   </ItemGroup>

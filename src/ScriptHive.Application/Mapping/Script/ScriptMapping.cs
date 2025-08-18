@@ -3,7 +3,7 @@ using ScriptHive.Domain.Entities.Script;
 
 namespace ScriptHive.Application.Mapping.ScriptMapping;
 
-public static class ScriptMappings
+public static class ScriptMapping
 {
     public static Script ToEntity(this ScriptRequestDTO dto)
         => ScriptFactory.Create(dto.Title, dto.Content, dto.OwnerId);

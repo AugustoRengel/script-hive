@@ -22,7 +22,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(c => c.Role)
             .HasConversion(
                 v => v.ToString(),
-                v => (UserRole)Enum.Parse(typeof(UserRole), v))
+                v => UserRoleHelper.ParseUserRole(v))
             .IsRequired();
 
         builder.Property(c => c.PasswordHash)
