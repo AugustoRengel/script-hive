@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Helpers\ScriptHelper.fs" />
     <Compile Include="Helpers\PasswordHelper.fs" />
     <Compile Include="ValueObjects\UserRole.fs" />
     <Compile Include="Entities\Script.fs" />
@@ -13,6 +14,10 @@
     <Compile Include="Interfaces\Auth\IAuthRepository.fs" />
     <Compile Include="Interfaces\User\IUserRepository.fs" />
 	<Compile Include="Interfaces\Script\IScriptRepository.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Jint" Version="4.4.1" />
   </ItemGroup>
 
 </Project>

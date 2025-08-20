@@ -17,7 +17,7 @@ namespace ScriptHive.Application;
 
 public static class ApplicationDependencyInjection
 {
-    public static IServiceCollection AddApplication(this IServiceCollection services)
+    public static IServiceCollection AddApplicationDependencies(this IServiceCollection services)
     {
         // Add FluentValidation
         services.AddValidatorsFromAssemblyContaining<UserValidator>();

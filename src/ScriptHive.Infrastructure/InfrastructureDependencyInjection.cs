@@ -13,7 +13,7 @@ namespace ScriptHive.Infrastructure;
 
 public static class InfrastructureDependencyInjection
 {
-    public static IServiceCollection AddInfrastructure(this IServiceCollection services)
+    public static IServiceCollection AddInfrastructureDependencies(this IServiceCollection services)
     {
         // Register infrastructure services here
         services.AddScoped<IUserRepository, UserRepository>();

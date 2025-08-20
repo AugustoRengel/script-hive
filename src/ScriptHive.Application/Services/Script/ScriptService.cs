@@ -1,22 +1,25 @@
-﻿using ScriptHive.Application.DTOs.ScriptDTOs;
+﻿using FluentValidation;
+using Microsoft.Extensions.Logging;
+using ScriptHive.Application.Commands.ScriptCommands;
+using ScriptHive.Application.DTOs.ScriptDTOs;
 using ScriptHive.Application.Interfaces.ScriptInterfaces;
 using ScriptHive.Application.Mapping.ScriptMapping;
+using ScriptHive.Domain.Helpers;
 using ScriptHive.Domain.Interfaces.ScriptInterfaces;
-
-using FluentValidation;
 
 namespace ScriptHive.Application.Services.ScriptServices;
 
-public class ScriptService(IScriptRepository repository, IValidator<ScriptRequestDTO> validator) : IScriptService
+public class ScriptService(IScriptRepository repository, IValidator<CreateScriptCommand> validator, ILogger<ScriptService> logger) : IScriptService
 {
     private readonly IScriptRepository _repository = repository;
-    private readonly IValidator<ScriptRequestDTO> _validator = validator;
+    private readonly IValidator<CreateScriptCommand> _validator = validator;
 
-    public async Task CreateAsync(ScriptRequestDTO dto)
+    public async Task CreateAsync(CreateScriptCommand command)
     {
-        await _validator.ValidateAndThrowAsync(dto);
+        logger.LogInformation("Validating command...");
+        await _validator.ValidateAndThrowAsync(command);
 
-        var entity = dto.ToEntity();
+        var entity = command.ToEntity();
 
         await _repository.CreateAsync(entity);
     }
@@ -33,14 +36,14 @@ public class ScriptService(IScriptRepository repository, IValidator<ScriptReques
         return entity?.ToResponse();
     }
 
-    public async Task UpdateAsync(Guid id, ScriptRequestDTO dto)
+    public async Task UpdateAsync(Guid id, CreateScriptCommand command)
     {
-        await _validator.ValidateAndThrowAsync(dto);
+        await _validator.ValidateAndThrowAsync(command);
 
         var existing = await _repository.GetByIdAsync(id) 
             ?? throw new KeyNotFoundException("Script não encontrado.");
 
-        var updated = existing.ToUpdatedEntity(dto);
+        var updated = existing.ToUpdatedEntity(command);
 
         await _repository.UpdateAsync(updated);
     }
