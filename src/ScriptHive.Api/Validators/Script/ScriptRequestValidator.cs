@@ -1,12 +1,11 @@
 ﻿using FluentValidation;
 using ScriptHive.Api.DTOs.ScriptDTOs;
-using System.Text.Json;
 
-namespace ScriptHive.Api.Validators.ScriptValidator;
+namespace ScriptHive.Api.Validators.ScriptRequestValidator;
 
-public class ScriptValidator : AbstractValidator<ScriptRequestDTO>
+public class ScriptRequestValidator : AbstractValidator<ScriptRequestDTO>
 {
-    public ScriptValidator()
+    public ScriptRequestValidator()
     {
         // Title - obrigatório e com tamanho mínimo/máximo
         RuleFor(x => x.Title)

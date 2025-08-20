@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Helpers\ScriptHelper.fs" />
     <Compile Include="Helpers\PasswordHelper.fs" />
     <Compile Include="ValueObjects\UserRole.fs" />
     <Compile Include="Entities\Script.fs" />

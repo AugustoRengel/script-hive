@@ -10,8 +10,6 @@ public static class ScriptMapping
         => ScriptFactory.Create(
             title: command.Title, 
             content: command.Content,
-            inputTestData: command.InputTestData,
-            outputTestData: command.OutputTestData,
             ownerId: command.OwnerId
         );
 
