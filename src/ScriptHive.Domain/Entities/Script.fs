@@ -1,7 +1,6 @@
 ﻿namespace ScriptHive.Domain.Entities.Script
 
 open System
-open ScriptHive.Domain.Helpers
 
 [<CLIMutable>]
 type Script =
@@ -14,10 +13,7 @@ type Script =
     }
 
 type ScriptFactory =
-    static member Create(title: string, content: string, inputTestData: string, outputTestData: string, ownerId: Guid) : Script =
-        let scriptIsValid = ScriptHelper.validateScript content inputTestData outputTestData
-        if not scriptIsValid then
-            raise (InvalidOperationException "Script execution Failed")
+    static member Create(title: string, content: string, ownerId: Guid) : Script =
         { 
             Id = Guid.NewGuid()
             Title = title
