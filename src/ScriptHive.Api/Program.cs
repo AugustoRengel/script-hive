@@ -5,13 +5,17 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ScriptHive.Api.Endpoints.AuthEndpoints;
 using ScriptHive.Api.Endpoints.ScriptEndpoints;
+using ScriptHive.Api.Endpoints.ScriptExecutionEndpoints;
 using ScriptHive.Api.Endpoints.UserEndpoints;
 using ScriptHive.Api.Middlewares;
 using ScriptHive.Api.OpenApi;
 using ScriptHive.Application;
+using ScriptHive.Domain.Interfaces.ScriptInterfaces;
 using ScriptHive.Infrastructure;
 using ScriptHive.Infrastructure.Context;
 using ScriptHive.Infrastructure.Persistence;
+using ScriptHive.Infrastructure.Queues;
+using ScriptHive.Worker;
 using System.Text;
 
 namespace ScriptHive.Api;
@@ -93,6 +97,7 @@ public class Program
         builder.Services.AddApiDependencies();
         builder.Services.AddApplicationDependencies();
         builder.Services.AddInfrastructureDependencies();
+        builder.Services.AddHostedService<ExecutionResultConsumer>();
 
         var app = builder.Build();
 
@@ -127,6 +132,7 @@ public class Program
         app.MapGroup("/auth").MapAuthEndpoints();
         app.MapGroup("/users").RequireAuthorization("AdminOnly").MapUserEndpoints();
         app.MapGroup("/scripts").RequireAuthorization("UserOrAdmin").MapScriptEndpoints();
+        app.MapGroup("/executions").RequireAuthorization("UserOrAdmin").MapScriptExecutionEndpoints();
 
         app.MapControllers();
 

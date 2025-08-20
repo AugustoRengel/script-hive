@@ -26,6 +26,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ScriptHive.Application\ScriptHive.Application.csproj" />
     <ProjectReference Include="..\ScriptHive.Infrastructure\ScriptHive.Infrastructure.csproj" />
+    <ProjectReference Include="..\ScriptHive.Worker\ScriptHive.Worker.csproj" />
   </ItemGroup>
 
 </Project>

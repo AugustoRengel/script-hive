@@ -8,10 +8,14 @@
   <ItemGroup>
     <Compile Include="Helpers\PasswordHelper.fs" />
     <Compile Include="ValueObjects\UserRole.fs" />
+	<Compile Include="ValueObjects\ExecutionStatus.fs" />
     <Compile Include="Entities\Script.fs" />
-    <Compile Include="Entities\User.fs" />
+	<Compile Include="Entities\ScriptExecution.fs" />
+	<Compile Include="Entities\User.fs" />
     <Compile Include="Interfaces\Auth\IAuthRepository.fs" />
     <Compile Include="Interfaces\User\IUserRepository.fs" />
+    <Compile Include="Interfaces\Script\IScriptExecutionResultQueue.fs" />
+    <Compile Include="Interfaces\Script\IScriptExecutionRepository.fs" />
 	<Compile Include="Interfaces\Script\IScriptRepository.fs" />
   </ItemGroup>
 

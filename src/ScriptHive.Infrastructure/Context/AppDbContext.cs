@@ -1,5 +1,6 @@
 ﻿using ScriptHive.Domain.Entities.User;
 using ScriptHive.Domain.Entities.Script;
+using ScriptHive.Domain.Entities.ScriptExecution;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +10,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 {
     public DbSet<User> Users { get; set; }
     public DbSet<Script> Scripts { get; set; }
+    public DbSet<ScriptExecution> ScriptExecutions { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
