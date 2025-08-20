@@ -31,6 +31,8 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ScriptHive.ScriptExecutor", "src\ScriptHive.ScriptExecutor\ScriptHive.ScriptExecutor.fsproj", "{38940A86-EAC9-4525-9898-9B76FF473C5E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptHive.Worker", "src\ScriptHive.Worker\ScriptHive.Worker.csproj", "{8F5018B3-949A-4E52-8716-EBC3633DA156}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +67,10 @@ Global
 		{38940A86-EAC9-4525-9898-9B76FF473C5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38940A86-EAC9-4525-9898-9B76FF473C5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38940A86-EAC9-4525-9898-9B76FF473C5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F5018B3-949A-4E52-8716-EBC3633DA156}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F5018B3-949A-4E52-8716-EBC3633DA156}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F5018B3-949A-4E52-8716-EBC3633DA156}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F5018B3-949A-4E52-8716-EBC3633DA156}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +82,7 @@ Global
 		{10886253-507D-43C0-8D82-27A18428EC74} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{B2EAE036-6FE8-4B96-A9E4-8ACBB8CF5EA0} = {9A741B09-D93E-4A3E-AD83-80C1C47C87D8}
 		{38940A86-EAC9-4525-9898-9B76FF473C5E} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{8F5018B3-949A-4E52-8716-EBC3633DA156} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {92E6B784-C089-4B42-BCBC-2B74C3603963}

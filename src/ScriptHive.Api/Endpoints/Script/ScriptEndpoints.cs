@@ -6,6 +6,7 @@ using ScriptHive.Api.DTOs.ScriptDTOs;
 using ScriptHive.Api.Helpers;
 using ScriptHive.Application.Commands.ScriptCommands;
 using ScriptHive.Application.Interfaces.ScriptInterfaces;
+using System;
 using System.Security.Claims;
 using System.Text.Json;
 
@@ -66,30 +67,6 @@ public static class ScriptEndpoints
             await service.CreateAsync(command);
             return Results.Created($"/scripts", null);
         })
-        .DisableAntiforgery();
-
-        group.MapPost("/{id:guid}/execute",
-            async (
-                Guid id,
-                [FromForm] ScriptExecutionDTO dto,
-                IScriptService service,
-                IValidator<ScriptExecutionDTO> _validator,
-                HttpContext httpContext) =>
-            {
-                await _validator.ValidateAndThrowAsync(dto);
-
-                var ownerId = httpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
-                if (string.IsNullOrEmpty(ownerId))
-                    return Results.Unauthorized();
-
-                var inputData = await FormFileHelper.ReadFormFileAsync(dto.InputData);
-                if (inputData is null)
-                    return Results.BadRequest("O arquivo json com dados de input é obrigatório.");
-
-                var scriptOutput = await service.ExecuteByIdAsync(id, inputData);
-                return Results.Text(scriptOutput, "application/json");
-            })
         .DisableAntiforgery();
 
         group.MapPut("/{id:guid}", 
