@@ -1,9 +1,9 @@
-﻿using ScriptHive.Application.DTOs.ScriptDTOs;
-using FluentValidation;
+﻿using FluentValidation;
+using ScriptHive.Application.Commands.ScriptCommands;
 
 namespace ScriptHive.Application.Validators.ScriptValidator;
 
-public class ScriptValidator : AbstractValidator<ScriptRequestDTO>
+public class ScriptValidator : AbstractValidator<CreateScriptCommand>
 {
     public ScriptValidator()
     {
@@ -11,9 +11,12 @@ public class ScriptValidator : AbstractValidator<ScriptRequestDTO>
             .NotEmpty().WithMessage("O título do script é obrigatório.")
             .MaximumLength(100).WithMessage("O título do script deve ter no máximo 100 caracteres.");
         RuleFor(x => x.Content)
-            .NotEmpty().WithMessage("O conteúdo do script é obrigatório.")
-            .MaximumLength(5000).WithMessage("O conteúdo do script deve ter no máximo 5000 caracteres.");
-        RuleFor(x => x.OwnerId)
-            .NotEmpty().WithMessage("O ID do proprietário do script é obrigatório.");
+            .NotNull().WithMessage("O conteúdo do script é obrigatório.")
+            .Must(c => c.Length > 0).WithMessage("O conteúdo do script não pode estar vazio.")
+            .Must(c => c.Length <= 5000).WithMessage("O conteúdo do script deve ter no máximo 5000 bytes.");
+        RuleFor(x => x.InputTestData)
+            .NotEmpty().WithMessage("Os dados de entrada para testar o script são obrigatórios.");
+        RuleFor(x => x.OutputTestData)
+            .NotEmpty().WithMessage("Os dados de saida para testar o script são obrigatórios.");
     }
 }

@@ -90,8 +90,9 @@ public class Program
         });
         // End of JWT Configuration
 
-        builder.Services.AddApplication();
-        builder.Services.AddInfrastructure();
+        builder.Services.AddApiDependencies();
+        builder.Services.AddApplicationDependencies();
+        builder.Services.AddInfrastructureDependencies();
 
         var app = builder.Build();
 

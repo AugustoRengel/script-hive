@@ -1,18 +1,25 @@
-﻿using ScriptHive.Application.DTOs.ScriptDTOs;
+﻿using ScriptHive.Application.Commands.ScriptCommands;
+using ScriptHive.Application.DTOs.ScriptDTOs;
 using ScriptHive.Domain.Entities.Script;
 
 namespace ScriptHive.Application.Mapping.ScriptMapping;
 
 public static class ScriptMapping
 {
-    public static Script ToEntity(this ScriptRequestDTO dto)
-        => ScriptFactory.Create(dto.Title, dto.Content, dto.OwnerId);
+    public static Script ToEntity(this CreateScriptCommand command)
+        => ScriptFactory.Create(
+            title: command.Title, 
+            content: command.Content,
+            inputTestData: command.InputTestData,
+            outputTestData: command.OutputTestData,
+            ownerId: command.OwnerId
+        );
 
-    public static Script ToUpdatedEntity(this Script existing, ScriptRequestDTO dto)
-        => new Script( // usa o construtor gerado do record F#
+    public static Script ToUpdatedEntity(this Script existing, CreateScriptCommand command)
+        => new Script(
             id: existing.Id,
-            title: dto.Title,
-            content: dto.Content,
+            title: command.Title,
+            content: command.Content,
             ownerId: existing.OwnerId,
             createdAt: existing.CreatedAt
         );
