@@ -55,7 +55,6 @@ public static class ScriptEndpoints
             if (outputTestData is null)
                 return Results.BadRequest("O arquivo do outputTestData é obrigatório.");
 
-            Console.WriteLine($"Run CreateScriptCommand");
             var command = new CreateScriptCommand(
                 Title: dto.Title,
                 Content: content,
@@ -63,10 +62,8 @@ public static class ScriptEndpoints
                 OutputTestData: outputTestData,
                 OwnerId: new Guid(ownerId)
             );
-            Console.WriteLine($"Run CreateAsync");
 
             await service.CreateAsync(command);
-            Console.WriteLine($"Run Results.Created");
             return Results.Created($"/scripts", null);
         })
         .DisableAntiforgery();
