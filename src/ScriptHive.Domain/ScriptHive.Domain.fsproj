@@ -15,8 +15,4 @@
 	<Compile Include="Interfaces\Script\IScriptRepository.fs" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Jint" Version="4.4.1" />
-  </ItemGroup>
-
 </Project>
