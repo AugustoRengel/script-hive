@@ -124,12 +124,15 @@ http://localhost:5351/swagger
 
 A partir desse ponto é possivel consumir o recurso que desejar do sistema, vamos ver um exemplo de uso:
 
-1. Salve em seu sistema os arquivos a seguir:
-    - [📥 Baixar script exemplo](https://github.com/AugustoRengel/script-hive/raw/main/docs/example-data/example_script.js)
-    - [📥 Baixar dados de input](https://github.com/AugustoRengel/script-hive/raw/main/docs/example-data/example_input-data.json)
-    - [📥 Baixar dados de output esperados](https://github.com/AugustoRengel/script-hive/raw/main/docs/example-data/example_output-data.json)
+1. Utilize os arquivos da pasta `docs/example-data/` nos proximos passos:
+    - [📄 Script exemplo - example_script.js](docs/example-data/example_script.js)
+    - [📄 Dados de input - example_input-data.json](docs/example-data/example_input-data.json)
+    - [📄 Dados de output esperados - example_output-data.json](docs/example-data/example_output-data.json)
+      
 2. Acesse **POST** `/scripts` e cadastre um script inserido o titulo e os arquivos baixados
-    ![Imagem dos dados carregados no endpoint POST scripts](docs/resources/scripts_load-example-files.png)
+
+<img src="docs/resources/scripts_load-example-files.png" alt="Imagem dos dados carregados no endpoint POST scripts" width="300"/>
+
 3. Execute e confirme que obteve retorno 201 com o `id` do script cadastrado
 4. Acesse **POST** `/executions/{id}`
 5. Insira o `id` salvo e o arquivo de input salvo
