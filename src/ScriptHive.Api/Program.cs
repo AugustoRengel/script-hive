@@ -10,11 +10,9 @@ using ScriptHive.Api.Endpoints.UserEndpoints;
 using ScriptHive.Api.Middlewares;
 using ScriptHive.Api.OpenApi;
 using ScriptHive.Application;
-using ScriptHive.Domain.Interfaces.ScriptInterfaces;
 using ScriptHive.Infrastructure;
 using ScriptHive.Infrastructure.Context;
 using ScriptHive.Infrastructure.Persistence;
-using ScriptHive.Infrastructure.Queues;
 using ScriptHive.Worker;
 using System.Text;
 
