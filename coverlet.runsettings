@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <DataCollector friendlyName="XPlat code coverage">
+        <Configuration>
+          <Format>opencover</Format>
+
+          <!-- Exclui por ARQUIVO (vários padrões) -->
+          <ExcludeByFile>**/Migrations/*.cs</ExcludeByFile>
+          <ExcludeByFile>**/*/Migrations/*.cs</ExcludeByFile>
+          <ExcludeByFile>**/*Migrations*.cs</ExcludeByFile>
+          <ExcludeByFile>**/*DesignTime*DbContextFactory*.cs</ExcludeByFile>
+
+          <!-- Exclui por MÓDULO/TIPO (caminho alternativo se ExcludeByFile falhar) -->
+          <Exclude>
+            [ScriptHive.Infrastructure]*.Migrations.*
+          </Exclude>
+
+          <!-- Atributos comuns para ignorar -->
+          <ExcludeByAttribute>
+            CompilerGeneratedAttribute,GeneratedCodeAttribute,ExcludeFromCodeCoverageAttribute
+          </ExcludeByAttribute>
+        </Configuration>
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
+</RunSettings>

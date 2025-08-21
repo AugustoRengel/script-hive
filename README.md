@@ -110,16 +110,16 @@ Requer .NET SDK 9 localmente instalado.
 script-hive/
 │
 ├── src/ 
-│	├── ScriptHive.Api		# Camada de apresentação com endpoints REST, injeção de dependências e autenticação JWT
-│	├── ScriptHive.Application	# Contém casos de uso, DTOs, validações e interfaces de serviços.
-│	├── ScriptHive.Domain		# Contém entidades, value objects e interfaces de repositórios e filas.
+│	├── ScriptHive.Api				# Camada de apresentação com endpoints REST, injeção de dependências e autenticação JWT
+│	├── ScriptHive.Application		# Contém casos de uso, DTOs, validações e interfaces de serviços.
+│	├── ScriptHive.Domain			# Contém entidades, value objects e interfaces de repositórios e filas.
 │	├── ScriptHive.Infrastructure	# Contém implementações de repositórios, contexto EF e implementação da fila em memória.
-│	├── ScriptHive.Worker		# Worker que atua em background para persistir os resultados dos scripts executados.
+│	├── ScriptHive.Worker			# Worker que atua em background para persistir os resultados dos scripts executados.
 │	└── ScriptHive.ScriptExecutor	# Execução de scripts .js com Jint
 ├── tests 
-│	└── ScriptHive.Tests		# Testes unitários
-├── docker-compose.yml			# Orquestração dos containers
-└── README.md				# Este arquivo
+│	└── ScriptHive.Tests			# Testes unitários
+├── docker-compose.yml				# Orquestração dos containers
+└── README.md						# Este arquivo
 ```
 
 ---
