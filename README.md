@@ -1,4 +1,6 @@
-﻿# 🛠️ script-hive
+[![CodeQL Advanced](https://github.com/AugustoRengel/script-hive/actions/workflows/codeql.yml/badge.svg)](https://github.com/AugustoRengel/script-hive/actions/workflows/codeql.yml)
+ 
+ # 🛠️ script-hive
 
 **ScriptHive** é uma plataforma de execução e gestão de scripts, 
 projetada para automatizar transformações de dados de forma segura e escalável. 
