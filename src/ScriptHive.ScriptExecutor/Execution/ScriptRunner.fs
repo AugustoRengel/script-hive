@@ -19,7 +19,7 @@ module public ScriptRunner =
             new Engine(fun options ->
                 options.LimitMemory(4_000_000) |> ignore
                 options.TimeoutInterval(TimeSpan.FromSeconds(4.0)) |> ignore
-                options.MaxStatements(1000) |> ignore
+                options.MaxStatements(10_000) |> ignore
             )
 
         [ "console"; "require"; "process"; "fs"; "fetch"; "XMLHttpRequest" ]

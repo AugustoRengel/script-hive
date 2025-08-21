@@ -2,6 +2,7 @@
 
 open System
 open ScriptHive.Domain.ValueObjects.ExecutionStatus
+open System.Text.Json
 
 [<CLIMutable>]
 type ScriptExecution =
@@ -29,9 +30,10 @@ type ScriptExecution with
             FinishedAt = Nullable(DateTime.UtcNow) }
 
     member this.MarkFailed(error: string) =
+        let errorJson = JsonSerializer.Serialize({| message = error |})
         { this with 
             Status = ExecutionStatus.Failed
-            Result = error
+            Result = errorJson
             FinishedAt = Nullable(DateTime.UtcNow) }
 
 type ScriptExecutionFactory =
