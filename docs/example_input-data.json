@@ -1,0 +1,26 @@
+[
+   {
+      "trimestre":"20231",
+      "nomeBandeira":"American Express",
+      "nomeFuncao":"Crédito",
+      "produto":"Intermediário",
+      "qtdCartoesEmitidos":433549,
+      "qtdCartoesAtivos":335542,
+      "qtdTransacoesNacionais":9107357,
+      "valorTransacoesNacionais":1617984610.42,
+      "qtdTransacoesInternacionais":76424,
+      "valorTransacoesInternacionais":41466368.94
+   },
+   {
+      "trimestre":"20232",
+      "nomeBandeira":"VISA",
+      "nomeFuncao":"Crédito",
+      "produto":"Empresarial",
+      "qtdCartoesEmitidos":3050384,
+      "qtdCartoesAtivos":1716709,
+      "qtdTransacoesNacionais":43984902,
+      "valorTransacoesNacionais":12846611557.78,
+      "qtdTransacoesInternacionais":470796,
+      "valorTransacoesInternacionais":397043258.04
+   }
+]

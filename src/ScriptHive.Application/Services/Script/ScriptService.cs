@@ -27,7 +27,7 @@ public class ScriptService(
 
     private readonly ConcurrentDictionary<Guid, CancellationTokenSource> _cancellationTokens = new();
 
-    public async Task CreateAsync(CreateScriptCommand command)
+    public async Task<Guid> CreateAsync(CreateScriptCommand command)
     {
         await _validator.ValidateAndThrowAsync(command);
 
@@ -44,6 +44,7 @@ public class ScriptService(
         );
 
         await _repository.CreateAsync(entity);
+        return entity.Id;
     }
 
     public async Task<IEnumerable<ScriptResponseDTO>> GetAllAsync()

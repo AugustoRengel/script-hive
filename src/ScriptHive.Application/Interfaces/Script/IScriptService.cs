@@ -6,7 +6,7 @@ namespace ScriptHive.Application.Interfaces.ScriptInterfaces;
 
 public interface IScriptService
 {
-    Task CreateAsync(CreateScriptCommand dto);
+    Task<Guid> CreateAsync(CreateScriptCommand dto);
     Task<IEnumerable<ScriptResponseDTO>> GetAllAsync();
     Task<IEnumerable<ScriptExecutionResponseDTO>> GetAllExecutionsAsync();
     Task<ScriptResponseDTO?> GetByIdAsync(Guid id);

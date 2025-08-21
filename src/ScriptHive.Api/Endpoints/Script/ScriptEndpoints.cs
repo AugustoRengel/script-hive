@@ -64,8 +64,8 @@ public static class ScriptEndpoints
                 OwnerId: new Guid(ownerId)
             );
 
-            await service.CreateAsync(command);
-            return Results.Created($"/scripts", null);
+            var createdId = await service.CreateAsync(command);
+            return Results.Created($"/scripts", new { createdId });
         })
         .DisableAntiforgery();
 
