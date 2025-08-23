@@ -53,10 +53,10 @@ jobs:
         dotnet-version: '9.0.x'
     
     - name: Restore dependencies
-      run: dotnet restore ./script-hive/ScriptHive.sln
+      run: dotnet restore
     
     - name: Build
-      run: dotnet build ./script-hive/ScriptHive.sln --configuration Release --no-restore
+      run: dotnet build --configuration Release --no-restore
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
