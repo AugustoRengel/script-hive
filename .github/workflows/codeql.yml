@@ -58,6 +58,18 @@ jobs:
     - name: Build
       run: dotnet build ./ScriptHive.sln --configuration Release --no-restore
 
+    - name: Run tests
+      run: dotnet test .\tests\ScriptHive.Tests\ScriptHive.Tests.csproj \
+            --configuration Release \
+            --no-build \
+            --collect:"XPlat Code Coverage" \
+            --settings coverlet.runsettings
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        files: tests/ScriptHive.Tests/TestResults/**/coverage.opencover.xml
+
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
       with:
