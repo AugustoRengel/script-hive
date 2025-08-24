@@ -42,11 +42,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v5
 
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v3
-      with:
-        languages: ${{ matrix.language }}
-
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
@@ -67,10 +62,16 @@ jobs:
           --settings coverlet.runsettings
 
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@v5
       with:
         files: tests/ScriptHive.Tests/TestResults/**/coverage.opencover.xml
+        token: ${{ secrets.CODECOV_TOKEN }}
 
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: ${{ matrix.language }}
+        
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
       with:
