@@ -1,4 +1,5 @@
 [![CodeQL Advanced](https://github.com/AugustoRengel/script-hive/actions/workflows/codeql.yml/badge.svg)](https://github.com/AugustoRengel/script-hive/actions/workflows/codeql.yml)
+[![codecov](https://codecov.io/github/AugustoRengel/script-hive/graph/badge.svg?token=5KLC9NIV3W)](https://codecov.io/github/AugustoRengel/script-hive)
  
  # 🛠️ script-hive
 
