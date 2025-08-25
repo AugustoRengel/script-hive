@@ -1,19 +1,19 @@
 ﻿using ScriptHive.Domain.Entities.User;
 using ScriptHive.Domain.ValueObjects.UserRole;
+using ScriptHive.Infrastructure.Context;
 using ScriptHive.Infrastructure.Repositories.AuthRepository;
-using ScriptHive.Tests.Unit.Infrastructure.Configurations;
-using ScriptHive.Tests.Unit.Infrastructure.Configurations.ScriptConfigurations;
+using ScriptHive.Tests.Unit.Infrastructure.Common;
 
-namespace ScriptHive.Tests.Unit.Infrastructure.Repositories;
+namespace ScriptHive.Tests.Unit.Infrastructure.Repositories.AuthRepositoryTest;
 
 public class AuthRepositoryTests
 {
-    private TestDbContext _ctx = null!;
+    private AppDbContext _ctx = null!;
 
     [SetUp]
     public void Setup()
     {
-        _ctx = TestDbContext.Create(nameof(AuthRepositoryTests));
+        _ctx = DbTestUtils.CreateInMemory(nameof(AuthRepositoryTests));
     }
 
     [TearDown]
@@ -25,14 +25,14 @@ public class AuthRepositoryTests
     [Test]
     public async Task GetByUsernameAsync_Returns_User_When_Exists()
     {
-        _ctx.Users.Add(new User { Id = Guid.NewGuid(), Name = "daniel", Email = "daniel@email.com", Role = UserRole.User, PasswordHash = "false@hash123" });
+        _ctx.Users.Add(new User { Id = Guid.NewGuid(), Name = "Isa", Email = "Isa@email.com", Role = UserRole.User, PasswordHash = "false@hash123" });
         await _ctx.SaveChangesAsync();
 
         var repo = new AuthRepository(_ctx);
-        var user = await repo.GetByUsernameAsync("daniel");
+        var user = await repo.GetByUsernameAsync("Isa");
 
         Assert.That(user, Is.Not.Null);
-        Assert.That(user!.Name, Is.EqualTo("daniel"));
+        Assert.That(user!.Name, Is.EqualTo("Isa"));
     }
 
     [Test]

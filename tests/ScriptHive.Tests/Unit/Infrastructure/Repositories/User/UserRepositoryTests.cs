@@ -1,20 +1,19 @@
 ﻿using ScriptHive.Domain.Entities.User;
 using ScriptHive.Domain.ValueObjects.UserRole;
+using ScriptHive.Infrastructure.Context;
 using ScriptHive.Infrastructure.Repositories.UserRepository;
 using ScriptHive.Tests.Unit.Infrastructure.Common;
-using ScriptHive.Tests.Unit.Infrastructure.Configurations;
-using ScriptHive.Tests.Unit.Infrastructure.Configurations.ScriptConfigurations;
 
-namespace ScriptHive.Tests.Unit.Infrastructure.Repositories;
+namespace ScriptHive.Tests.Unit.Infrastructure.Repositories.UserRepositoryTest;
 
 public class UserRepositoryTests
 {
-    private TestDbContext _ctx = null!;
+    private AppDbContext _ctx = null!;
 
     [SetUp]
     public void Setup()
     {
-        _ctx = TestDbContext.Create(nameof(UserRepositoryTests));
+        _ctx = DbTestUtils.CreateInMemory(nameof(UserRepositoryTests));
     }
 
     [TearDown]

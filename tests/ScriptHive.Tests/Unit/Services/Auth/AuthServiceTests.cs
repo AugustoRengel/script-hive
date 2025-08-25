@@ -6,14 +6,10 @@ using ScriptHive.Domain.Entities.User;
 using ScriptHive.Domain.Helpers;
 using ScriptHive.Domain.Interfaces.AuthInterfaces;
 using ScriptHive.Domain.ValueObjects.UserRole;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace ScriptHive.Tests.Unit.Services;
+namespace ScriptHive.Tests.Unit.Services.AuthServiceTests;
 
 public class AuthServiceTests
 {
