@@ -25,8 +25,7 @@ public class ScriptExecutionRepositoryTests
     [Test]
     public async Task Create_And_GetAll_Works()
     {
-        using var ctx = DbTestUtils.CreateInMemory(nameof(Create_And_GetAll_Works));
-        var repo = new ScriptExecutionRepository(ctx);
+        var repo = new ScriptExecutionRepository(_ctx);
 
         await repo.CreateAsync(
             new ScriptExecution 
@@ -50,8 +49,7 @@ public class ScriptExecutionRepositoryTests
     [Test]
     public async Task GetById_And_Exists_Works()
     {
-        using var ctx = DbTestUtils.CreateInMemory(nameof(GetById_And_Exists_Works));
-        var repo = new ScriptExecutionRepository(ctx);
+        var repo = new ScriptExecutionRepository(_ctx);
 
         var c = new ScriptExecution
         {
@@ -77,8 +75,7 @@ public class ScriptExecutionRepositoryTests
     [Test]
     public async Task Update_And_Delete_Works()
     {
-        using var ctx = DbTestUtils.CreateInMemory(nameof(Update_And_Delete_Works));
-        var repo = new ScriptExecutionRepository(ctx);
+        var repo = new ScriptExecutionRepository(_ctx);
 
         var c = new ScriptExecution 
         {
